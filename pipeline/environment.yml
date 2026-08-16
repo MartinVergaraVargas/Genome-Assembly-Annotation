@@ -1,0 +1,20 @@
+# Environment for the orchestrator tool itself (pipeline/), NOT the
+# bioinformatics tools it invokes -- those stay in their own dedicated
+# conda envs (trimmomatic, spades, pilon, seqkit, funannotate, busco),
+# listed under conda_envs: in each strain's config YAML and run via
+# `conda run -n <env>` (see pipeline/envs.py). This env only needs to be
+# able to import pipeline.cli.
+#
+#   conda env create -f pipeline/environment.yml
+#   conda run -n trichopipe python -m pipeline.cli run --config <config.yaml>
+#
+# Already satisfied by the machine's base conda env (python 3.13.12,
+# pydantic 2.12.4, pyyaml) at the time this was written -- this file exists
+# so the tool is reproducible somewhere that isn't already set up that way.
+name: trichopipe
+channels:
+  - conda-forge
+dependencies:
+  - python>=3.10
+  - pydantic>=2
+  - pyyaml

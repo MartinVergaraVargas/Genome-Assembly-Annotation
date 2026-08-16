@@ -1,0 +1,19 @@
+
+# conda environments:
+#
+# * -> active
+# + -> frozen
+base                     /opt/miniconda3
+barrnap                  /opt/miniconda3/envs/barrnap
+blast                    /opt/miniconda3/envs/blast
+busco                    /opt/miniconda3/envs/busco
+fastqc                   /opt/miniconda3/envs/fastqc
+funannotate              /opt/miniconda3/envs/funannotate
+orthofinder              /opt/miniconda3/envs/orthofinder
+pilon                    /opt/miniconda3/envs/pilon
+quast                    /opt/miniconda3/envs/quast
+seqkit                   /opt/miniconda3/envs/seqkit
+sourmash                 /opt/miniconda3/envs/sourmash
+spades                   /opt/miniconda3/envs/spades
+trimmomatic              /opt/miniconda3/envs/trimmomatic
+

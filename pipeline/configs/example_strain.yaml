@@ -1,0 +1,52 @@
+# Example config — H10603, the one strain that hasn't entered the pipeline
+# yet. Every path below is real and exists on this machine, so this file is
+# directly runnable, not just illustrative:
+#
+#   python -m pipeline.cli run --config pipeline/configs/example_strain.yaml --validate-only
+#   python -m pipeline.cli run --config pipeline/configs/example_strain.yaml
+#
+# Copy this file per strain (e.g. configs/h10603.yaml) rather than editing
+# in place once you have more than one strain in flight.
+
+strain: H10603
+species: "Trichoderma sp."
+base_dir: /srv/TFM/PL-iteracion.05
+
+dna_reads:
+  r1: /srv/TFM/PL-iteracion.05/00.Archivos_principales/Secuencias_Illumina/H10603/H10603_1.fastq.gz
+  r2: /srv/TFM/PL-iteracion.05/00.Archivos_principales/Secuencias_Illumina/H10603/H10603_2.fastq.gz
+
+# RNA-seq used as training evidence for gene prediction (funannotate train).
+# This is the one field the old fun_train.py hardcoded regardless of strain
+# — here it's mandatory and explicit. Using the pooled reference
+# transcriptome below is a legitimate choice when a strain has no RNA-seq
+# of its own (common for closely related fungal strains); swap in
+# strain-specific reads if/when you have them.
+rna_reads:
+  left:
+    - /srv/TFM/PL-iteracion.05/00.Archivos_principales/SRA-seq/all_left_asperellum_hamatum.fastq.gz
+  right:
+    - /srv/TFM/PL-iteracion.05/00.Archivos_principales/SRA-seq/all_right_asperellum_hamatum.fastq.gz
+
+busco_lineage: /srv/biodata/busco_downloads/lineages/hypocreales_odb12
+
+conda_envs:
+  trimmomatic: trimmomatic
+  spades: spades
+  pilon: pilon
+  seqkit: seqkit
+  funannotate: funannotate
+  busco: busco
+
+resources:
+  threads: 16
+  memory_gb: 26
+
+notifications:
+  enabled: true
+  email: your-email@example.com
+
+funannotate_busco_workaround: true
+pilon_max_rounds: 2
+contig_min_len: 3000
+busco_seed_species: fusarium_graminearum
