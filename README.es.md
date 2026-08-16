@@ -95,4 +95,4 @@ python -m unittest discover pipeline/tests
 
 ## Licencia
 
-Aún no decidida — agrega un archivo `LICENSE` antes de asumir que esto está abierto para reutilización.
+[MIT](LICENSE)
